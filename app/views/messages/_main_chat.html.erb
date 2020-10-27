@@ -1,7 +1,7 @@
 <div class="chat-header">
   <div class="header-box">
     <div class="title">
-    <a href="#">hogehoge</a>
+    <a href="#">Hogehoge</a>
     </div>
     <div class="end-btn">
       <a href="#">チャットを終了する</a>
@@ -40,13 +40,15 @@
   </div>
 </div>
 
-<div class="chat-box">
+
+<%= form_with model: [@room, @message], class: 'chat-box', local: true do |f| %>
   <div class="comment-box">
-    <input type="text" placeholder="text a message" class="commit">
+    <%= f.text_field :content, class: 'commit', placeholder: 'type a message' %>
     <label class="comment-image">
-      <span class="iamge-file">画像</span>
-      <input type="file" class="hidden">
+      <span class="image-file">image</span>
+      <%= f.file_field :image, class: 'hidden' %>
     </label>
   </div>
-  <input type="submit" placeholder="Send" class="send">
-</div>
+  <%= f.submit 'SEND', class: 'send' %>
+<% end %>
+
