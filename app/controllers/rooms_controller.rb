@@ -13,6 +13,13 @@ class RoomsController < ApplicationController
       render :new
     end
   end
+  def destroy
+    # .findでkeyやid情報を指定,取得
+    room = Room.find(params[:id])
+    #.findで指定してからDB上のデータを消す
+    room.destroy
+    redirect_to root_path
+  end
 
   private
   def room_params
